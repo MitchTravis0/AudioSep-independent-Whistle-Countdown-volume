@@ -1,0 +1,32 @@
+AudioSep for MECCHA CHAMELEON
+=============================
+Set the COUNTDOWN-timer volume and the WHISTLE volume separately.
+
+HOW TO INSTALL (easy)
+  1. Make sure MECCHA CHAMELEON is installed via Steam and is CLOSED.
+  2. Double-click  "Install AudioSep.bat".
+  3. If Windows SmartScreen warns ("Windows protected your PC"), click
+     "More info" -> "Run anyway". (UE4SS-based mods commonly trip this; it is
+     a false positive. You can scan the files first if you like.)
+  4. The window will say where it installed and then close on a key press.
+  5. Launch the game through Steam.
+
+USING IT
+  In a private match:
+    - Open Settings -> Sound: you'll see "Countdown Volume" and
+      "Whistle Volume" sliders.
+    - Or use the UE4SS console (~ key) / hotkeys:
+        F1/F2 = countdown down/up,  F3/F4 = whistle down/up
+        console:  cdvol 0.5     whistlevol 1.0
+  Your levels are saved and reload next launch.
+
+TO UNINSTALL
+  Double-click  "Uninstall AudioSep.bat".
+
+REQUIREMENTS / NOTES
+  - Windows + Steam version of the game (built for patch 1.1.0 / UE 5.6).
+  - Client-side and hear-only. Use it in private lobbies.
+  - If a slider does not appear, open Settings -> Sound, then in the UE4SS
+    console type:  audiosepdump   and send the output to whoever shared this.
+
+Full details: WALKTHROUGH.md
