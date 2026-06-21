@@ -29,4 +29,4 @@ REQUIREMENTS / NOTES
   - If a slider does not appear, open Settings -> Sound, then in the UE4SS
     console type:  audiosepdump   and send the output to whoever shared this.
 
-Full details: WALKTHROUGH.md
+Full details: README.md

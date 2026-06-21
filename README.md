@@ -1,9 +1,9 @@
-# AudioSep — independent Whistle / Countdown volume for MECCHA CHAMELEON
+# AudioSep: independent Whistle / Countdown volume for MECCHA CHAMELEON
 
 A small [UE4SS](https://github.com/UE4SS-RE/RE-UE4SS) Lua mod that lets you set the
 **countdown-timer** volume and the **whistle** volume **independently**, instead of
 both moving together under the in-game SFX slider. Adjust them from two native
-sliders in **Settings → Sound**, from hotkeys, or from the console — and your
+sliders in **Settings → Sound**, from hotkeys, or from the console, and your
 levels are saved between sessions.
 
 > **Game:** MECCHA CHAMELEON (Steam App `4704690`) · **Engine:** Unreal Engine 5.6.0 · **Tested:** patch 1.1.0
@@ -26,7 +26,7 @@ levels are saved between sessions.
 
 - Windows + the **Steam** version of MECCHA CHAMELEON.
 - Built and tested against **patch 1.1.0 / UE 5.6.0**. A future game patch can rename
-  cues or shift the executable signature — see [Troubleshooting](#troubleshooting).
+  cues or shift the executable signature; see [Troubleshooting](#troubleshooting).
 - Everything else (UE4SS, signature fix) is bundled. Nothing else to install.
 
 ---
@@ -35,7 +35,10 @@ levels are saved between sessions.
 
 ### Easy (recommended)
 
-1. Download **`AudioSep-MecchaChameleon.zip`** from the [Releases](../../releases) page.
+1. Go to the **[Releases](../../releases)** page. (On the project's GitHub page, click
+   **Releases** in the right-hand sidebar, or just add `/releases` to the repo's web
+   address.) Under the latest release's **Assets**, download
+   **`AudioSep-MecchaChameleon.zip`**.
 2. Extract it anywhere.
 3. Make sure the game is **closed**, then double-click **`Install AudioSep.bat`**.
    - It auto-locates your Steam install (it reads your Steam library list and finds
@@ -44,6 +47,11 @@ levels are saved between sessions.
      **More info → Run anyway**. UE4SS-based mods commonly trip this; it is a false
      positive. You may scan the files first if you prefer.
 4. Launch the game through Steam.
+
+> **First launch:** a small UE4SS console window opens alongside the game; this is
+> normal, and you can minimize it. AudioSep loads automatically. Out of the box the
+> **countdown** plays at 100% and the **whistle** at 50%; change either from
+> Settings → Sound, the hotkeys, or the console (see [Usage](#usage)).
 
 ### Manual
 
@@ -73,6 +81,12 @@ Chameleon\Binaries\Win64\
             └── Scripts\main.lua                  (the mod)
 ```
 
+### Updating
+
+Download the newer **`AudioSep-MecchaChameleon.zip`** and run **`Install AudioSep.bat`**
+again with the game closed. It overwrites the old files in place, and your saved volume
+levels (`levels.txt`) carry over, so you keep your settings.
+
 ### Uninstall
 
 Double-click **`Uninstall AudioSep.bat`** (removes `dwmapi.dll` and the `ue4ss\` folder),
@@ -86,13 +100,13 @@ Open a **private** match, then:
 
 - **Settings → Sound:** use the **Countdown Volume** and **Whistle Volume** sliders.
 - **Hotkeys:**
-  - `F1` / `F2` — countdown volume down / up
-  - `F3` / `F4` — whistle volume down / up
-  - `F8` — print current levels to the UE4SS console
+  - `F1` / `F2`: countdown volume down / up
+  - `F3` / `F4`: whistle volume down / up
+  - `F8`: print current levels to the UE4SS console
 - **Console** (open with the `` ` `` / `~` key):
-  - `cdvol <0..4>` — set countdown volume (e.g. `cdvol 0.5`)
-  - `whistlevol <0..4>` — set whistle volume (e.g. `whistlevol 1.0`)
-  - `audiosep` — show current levels
+  - `cdvol <0..4>`: set countdown volume (e.g. `cdvol 0.5`)
+  - `whistlevol <0..4>`: set whistle volume (e.g. `whistlevol 1.0`)
+  - `audiosep`: show current levels
 
 `0.0` = silent, `1.0` = normal, up to `4.0` to boost. Values are written to
 `ue4ss\Mods\AudioSep\levels.txt` and restored on the next launch.
@@ -134,7 +148,7 @@ Check the UE4SS console (or `Win64\UE4SS.log`) for `[AudioSep] active …`. Veri
 
 **A slider doesn't appear in Settings → Sound**
 Open Settings → Sound, then type `audiosepdump` in the UE4SS console and report the
-output — it prints the live settings-page path and container. The hotkeys/console
+output; it prints the live settings-page path and container. The hotkeys/console
 work regardless of the sliders.
 
 **A sound isn't being affected (wrong cue, or a game update renamed it)**
@@ -147,11 +161,15 @@ Reproduce the sound, read the name from the console / `UE4SS.log`, and put a
 distinctive substring of it into `COUNTDOWN_MATCH` or `WHISTLE_MATCH`. Then set the
 flag back to `false`.
 
+**Still stuck?** Open an issue on the project's [Issues](../../issues) page. Include your
+game patch version, and if a cue is wrong, the `audiosepdump` output (or the `DEBUG`
+console log) so the matched names can be fixed.
+
 ---
 
 ## Building / editing from source
 
-This is plain Lua — no build step. Edit
+This is plain Lua, no build step. Edit
 `ue4ss\Mods\AudioSep\Scripts\main.lua` and restart the game (or use UE4SS
 hot-reload). The matched cue names and default gains are constants at the top of the
 file.
@@ -160,16 +178,16 @@ file.
 
 ## Credits & acknowledgements
 
-- **[UE4SS / RE-UE4SS](https://github.com/UE4SS-RE/RE-UE4SS)** — the scripting runtime (bundled).
-- **[MecchaChameleon-FOVControl](https://github.com/TakoKylo/MecchaChameleon-FOVControl)** by *Amikiir* — reference for the settings-slider injection pattern and the source of the bundled UE 5.6 signature fix.
+- **[UE4SS / RE-UE4SS](https://github.com/UE4SS-RE/RE-UE4SS)**: the scripting runtime (bundled).
+- **[MecchaChameleon-FOVControl](https://github.com/TakoKylo/MecchaChameleon-FOVControl)** by *Amikiir*: reference for the settings-slider injection pattern and the source of the bundled UE 5.6 signature fix.
 - Signature fix origin: [UE4SS issue #1197](https://github.com/UE4SS-RE/RE-UE4SS/issues/1197).
 
 ## License & disclaimer
 
-The AudioSep scripts in this repository are released freely — use, modify, and
+The AudioSep scripts in this repository are released freely: use, modify, and
 redistribute them. Bundled UE4SS retains its own license (see `ue4ss/LICENSE`).
 
 This is an unofficial, fan-made mod, not affiliated with or endorsed by the
 developer. It only rebalances the relative volume of two cues **you already hear**,
-so it gives no information other players lack — but it is still a third-party
+so it gives no information other players lack, but it is still a third-party
 modification: run it in **private lobbies** and at your own risk.
